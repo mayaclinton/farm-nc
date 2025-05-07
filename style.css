@@ -166,13 +166,40 @@
   
   /* Footer */
   footer {
-    background: #f4f4f4;
-    padding: 1.5rem;
+    background-color: #f4f4f4;
+    padding: 2rem 0;
     text-align: center;
-    font-size: 0.875rem;
-    color: #666;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid #e0e0e0;
   }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  footer p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-logos {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .footer-logo {
+    height: 100px;
+  }
+  
+  .footer-logo:hover {
+    opacity: 1;
+  }
+  
 
 /* === Global Theme === */
 body {
