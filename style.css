@@ -1,0 +1,709 @@
+/* Reset & Base */
+:root {
+  /* Palette */
+  --clr-bg: #fafaf6;
+  --clr-foreground: #333333;
+  --clr-primary: #316650;   /* deep forest green */
+  --clr-primary-light: #4b8c6f;
+  --clr-secondary: #ffffff; 
+  --clr-accent: #d99b5c;    /* subtle gold */
+
+  /* Typography */
+  --ff-base: 'Poppins', sans-serif;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 2rem;
+
+  /* Spacing */
+  --spacer: 1rem;
+
+  /* Animation Durations */
+  --anim-fast: 0.2s;
+  --anim-medium: 0.6s;
+  --anim-slow: 1s;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  width:24px
+}
+
+/* Remove rounding on just the LinkedIn nav item */
+.nav-icon,
+.nav-icon a {
+  border-radius: 0 !important;
+  overflow: visible; /* in case you had hidden corners */
+  transition: color var(--anim-fast);
+}
+.nav-icon a:hover {
+  color: var(--clr-primary);
+}
+.linkedin-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.linkedin-icon {
+  width: 24px;
+  height: auto;
+  display: block;
+  filter: grayscale(100%) brightness(0%) sepia(0%) saturate(0%) hue-rotate(0deg);
+  /* Above makes it black; adjust filters to match nav color if needed */
+  transition: filter var(--anim-fast) ease;
+}
+
+.nav-icon a:hover .linkedin-icon {
+  filter: none; /* Returns to original colored SVG, or adjust filters for hover color */
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:  'Poppins'; 
+  background: #fdfdf9;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+a {
+  color: #2f5f4e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1a3a2a;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 100;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #2f5f4e;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: #1a3a2a;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #2f5f4e;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  background: #fff;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: #2f5f4e;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+.carousel-container {
+  position: relative;
+     /* horizontal centering */
+  height: 60vh;                 /* ensure it fills the carousel height */
+  overflow: hidden;
+}
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 60vh;                /* adjust as needed */
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  position: relative;           
+  z-index: 2;                   /* above the images */
+  text-align: center;
+}
+
+.hero-text img {
+  position: absolute;
+  width: 400px;
+  height: auto;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Blog Header */
+.blog-header {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacer) * 3) 1rem;
+  text-align: center;
+}
+.blog-header-text h1 {
+  font-size: 2.5rem;
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+.blog-header-text p {
+  font-size: var(--fs-lg);
+  color: var(--clr-foreground);
+}
+
+/* Main Container */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Project List */
+.project ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.project li::before {
+  content: "✓";
+  color: #3d9970;
+  margin-right: 0.5rem;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.member {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.member:hover {
+  transform: translateY(-4px);
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.member h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.member p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Center member cards in the grid */
+.team-grid {
+  /* if you want each card to be centered in its grid cell */
+  place-items: center;
+}
+
+/* Ensure the contents of each .member are vertically stacked and centered */
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* fallback */
+}
+
+/* Make the profile image block‑level and center it */
+.profile-img {
+  display: block;
+  margin: 0 auto 0.75rem;
+}
+
+
+/* Blog Listing */
+.blog-list h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.post-excerpt article {
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s;
+}
+
+.post-excerpt article:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.post-excerpt h2 a {
+  font-size: 1.5rem;
+  color: #2f5f4e;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.75rem;
+}
+
+.post-excerpt p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Single Post */
+.blog-post-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.blog-post h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: #2c2c2c;
+}
+
+.check-list {
+  list-style: none;
+  margin: 1rem 0;
+  padding-left: 0;
+}
+
+.check-list li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.check-list li::before {
+  content: "✅";
+  margin-right: 0.5rem;
+}
+
+.post-content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.back-link {
+  font-size: 0.95rem;
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+/* Contact */
+.contact a {
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  background: #fafafa;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Footer Logos Centering */
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--spacer) * 1); /* space between logos */
+  margin-bottom: var(--spacer);  /* some breathing room above the © text */
+}
+
+.footer-logos img {
+  max-height: 60px;  /* or whatever fits your design */
+  width: auto;
+  display: block;
+}
+
+
+/*--------------------------------------------------------------
+1. VARIABLES & GLOBALS
+--------------------------------------------------------------*/
+:root {
+  /* Palette */
+  --clr-bg: #fafaf6;
+  --clr-foreground: #333333;
+  --clr-primary: #316650;
+  --clr-primary-light: #4b8c6f;
+  --clr-secondary: #f0e6d2;
+  --clr-accent: #d99b5c;
+
+  /* Typography */
+  --ff-base: 'Inter', sans-serif;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 2rem;
+
+  /* Spacing */
+  --spacer: 1rem;
+
+  /* Animation Durations */
+  --anim-fast: 0.2s;
+  --anim-medium: 0.6s;
+  --anim-slow: 1s;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--clr-bg);
+  color: var(--clr-foreground);
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links */
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: color var(--anim-fast) ease,
+              transform var(--anim-fast) ease;
+}
+a:hover {
+  color: var(--clr-primary-light);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp var(--anim-medium) both;
+}
+
+/*--------------------------------------------------------------
+2. NAVIGATION & HERO
+--------------------------------------------------------------*/
+.nav-links {
+  display: flex;
+  gap: calc(var(--spacer) * 1);
+}
+.nav-links a {
+  position: relative;
+  padding: 0.2rem 0;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--clr-primary);
+  transition: width var(--anim-fast) ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-text {
+  opacity: 0;
+  animation: fadeInUp var(--anim-slow) both 0.5s;
+  font-size: var(--fs-xl);
+  color: var(--clr-primary);
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+3. BLOG LISTING (blog.html)
+--------------------------------------------------------------*/
+.post-excerpt {
+  display: grid;
+  gap: calc(var(--spacer) * 1.5);
+}
+.post-excerpt article {
+  background: #e5f0e5;
+  padding: calc(var(--spacer) * 1.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: box-shadow var(--anim-fast) ease,
+              transform var(--anim-fast) ease;
+}
+.post-excerpt article:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+.post-excerpt h2 a {
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  display: inline-block;
+}
+.post-excerpt p {
+  margin: 0.75rem 0 0;
+  color: #4a4a4a;
+}
+
+/*--------------------------------------------------------------
+4. SINGLE POST (post1.html)
+--------------------------------------------------------------*/
+.blog-post {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: calc(var(--spacer) * 1.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+.blog-post h1 {
+  color: var(--clr-primary);
+  margin-bottom: var(--spacer);
+  font-size: 2.5rem;
+}
+.blog-post h2,
+.blog-post h3 {
+  color: var(--clr-foreground);
+  margin-top: calc(var(--spacer) * 2);
+}
+.blog-post p {
+  margin-bottom: var(--spacer);
+}
+.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+.check-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.check-list li::before {
+  content: "✔︎";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--clr-accent);
+}
+
+/* Back‑to‑Blog Button */
+.btn-outline {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--clr-primary);
+  border-radius: 0px;
+  font-size: var(--fs-lg);
+  color: var(--clr-primary);
+  transition: background var(--anim-fast) ease,
+              color var(--anim-fast) ease,
+              transform var(--anim-fast) ease;
+  margin-top: var(--spacer);
+}
+.btn-outline:hover {
+  background: var(--clr-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/*--------------------------------------------------------------
+5. MEDIA & RESPONSIVENESS
+--------------------------------------------------------------*/
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 0px;
+}
+@media (max-width: 768px) {
+  .post-excerpt {
+    grid-template-columns: 1fr;
+  }
+  .hero-text {
+    font-size: var(--fs-lg);
+  }
+}
+
+/*--------------------------------------------------------------
+4b. SINGLE POST (post1.html – improved structure)
+--------------------------------------------------------------*/
+
+/* Container */
+.blog-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+/* Header (title + meta) */
+.blog-post-header {
+  margin-bottom: var(--spacer);
+  text-align: center;
+}
+.blog-post-header h1 {
+  font-size: 2.5rem;
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+.blog-post-header .post-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+.blog-post-header .post-meta .author {
+  font-weight: 500;
+}
+.blog-post-header .post-meta time {
+  font-style: italic;
+}
+
+/* Main content */
+.blog-post-content {
+  line-height: 1.7;
+}
+.blog-post-content h2 {
+  margin-top: var(--spacer);
+  margin-bottom: 0.5rem;
+  color: var(--clr-foreground);
+  font-size: 1.75rem;
+}
+.blog-post-content p {
+  margin-bottom: var(--spacer);
+  font-size: 1rem;
+}
+
+/* Check‑list styling (already in place, but for reference) */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacer) 0;
+}
+.check-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.check-list li::before {
+  content: "✔︎";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--clr-accent);
+}
+
+/* Back‑link button */
+.back-link {
+  text-align: center;
+  margin-top: calc(var(--spacer) * 1.5);
+}
+.back-link .btn-outline {
+  padding: 0.6rem 1.2rem;
+  font-size: var(--fs-base);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacer);
+  margin: var(--spacer) 0;
+}
+.gallery-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
